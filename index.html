@@ -17,6 +17,7 @@
         margin: 0;
         height: 100%;
         font-family: "Open Sans";
+        color: #222;
       }
 
       h1 {
@@ -24,7 +25,7 @@
         line-height: 1em;
       }
       h1 small {
-        opacity: 0.5;
+        opacity: 0.4;
         font-size: 0.5em;
         vertical-align: 1em;
       }
@@ -38,25 +39,21 @@
       }
 
       .Slide {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
         padding: 80px 0;
-      }
-      .Slide:nth-of-type(1) {
-        min-height: 100vh;
+        min-height: 90vh;
       }
       .Slide:nth-of-type(2) .Slide__Content {
+        min-height: 0;
         margin: 40px;
         border-radius: 16px;
         border: 2px solid rgba(0, 0, 0, 0.05);
       }
-      .Slide:nth-of-type(3) {
-        min-height: 120vh;
-      }
       .Slide:nth-of-type(4) {
-        min-height: 100vh;
         background-color: whitesmoke;
       }
       .Slide__Content {
@@ -98,22 +95,18 @@
         55% {
           top: 4px;
           opacity: 1;
-          transform: scale(1);
         }
         70% {
           top: 4px;
           opacity: 0.1;
-          -transform: scale(0.8);
         }
         85% {
           top: -4px;
           opacity: 0.1;
-          -transform: scale(0.8);
         }
         100% {
           top: -4px;
           opacity: 1;
-          transform: scale(1);
         }
       }
     </style>
@@ -129,7 +122,7 @@
           width="80"
           height="80"
           viewBox="0 0 250 250"
-          style="fill:#000000; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+          style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
           aria-hidden="true"
         >
           <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
