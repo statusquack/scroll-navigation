@@ -5,9 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Scroll Navigation</title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+
+      .slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 24px;
+      }
+
+      .slide:nth-of-type(1) {
+        min-height: 100vh;
+        background-color: #83b582;
+      }
+      .slide:nth-of-type(2) {
+        min-height: 80vh;
+        background-color: #d6e4aa;
+      }
+      .slide:nth-of-type(3) {
+        min-height: 140vh;
+        background-color: #ffffc5;
+      }
+      .slide:nth-of-type(4) {
+        min-height: 100vh;
+        background-color: #f0dd92;
+      }
+    </style>
   </head>
 
-  <body>
-    <h1>Scroll Navigation</h1>
-  <script type="text/javascript" src="index.js"></script></body>
+  <body class="scroll-navigation" data-component="scroll-navigation">
+    <div class="slide" data-component="scroll-navigation-item">
+      <h1>Scroll Navigation</h1>
+    </div>
+    <div class="slide" data-component="scroll-navigation-item">
+      <h1>Scroll Navigation</h1>
+    </div>
+    <div class="slide" data-component="scroll-navigation-item">
+      <h1>Scroll Navigation</h1>
+    </div>
+    <div class="slide" data-component="scroll-navigation-item">
+      <h1>Scroll Navigation</h1>
+    </div>
+
+    <script defer>
+      addEventListener("DOMContentLoaded", () => {
+        new ScrollNavigation(document.scrollingElement);
+      });
+    </script>
+  <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="scrollNavigation.min.js"></script></body>
 </html>
