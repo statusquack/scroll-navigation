@@ -7,7 +7,18 @@
     <title>Scroll Navigation - Status Quack</title>
 
     <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&amp;subset=latin-ext"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Teko:700&display=swap"
       rel="stylesheet"
     />
 
@@ -20,22 +31,58 @@
         color: #222;
       }
 
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: Teko;
+      }
+
       h1 {
         text-align: center;
         line-height: 1em;
+        font-size: 4rem;
       }
       h1 small {
         opacity: 0.4;
         font-size: 0.5em;
         vertical-align: 1em;
       }
-      a {
-        color: inherit;
+      h2 {
+        font-size: 2.5em;
+        margin: 0.5em 0 0 0;
+        line-height: 1em;
+      }
+      h1 a {
         text-decoration: none;
       }
+      a {
+        color: inherit;
+      }
       p {
-        max-width: 320px;
-        font-size: 14px;
+        max-width: 400px;
+        font-size: 16px;
+      }
+
+      @media (max-width: 800px) {
+        h1 {
+          font-size: 3rem;
+          line-height: 0.6em;
+        }
+        h2 {
+          font-size: 2.2rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 1.8rem;
+        }
       }
 
       .Slide {
@@ -47,8 +94,11 @@
         padding: 80px 0;
         min-height: 90vh;
       }
-      .Slide:nth-of-type(2) .Slide__Content {
+      .Slide:nth-of-type(2) {
         min-height: 0;
+        padding: 0;
+      }
+      .Slide:nth-of-type(2) .Slide__Content {
         margin: 40px;
         border-radius: 16px;
         border: 2px solid rgba(0, 0, 0, 0.05);
@@ -174,7 +224,10 @@
           >
           Scroll&nbsp;Navigation
         </h1>
-        <p>An intelligent library for single-page scroll navigation.</p>
+        <p>
+          An intelligent vanilla JavaScript library for single-page scroll
+          navigation.
+        </p>
       </div>
 
       <div class="ScrollDown">
@@ -200,23 +253,35 @@
       </div>
     </div>
     <div class="Slide" data-component="scroll-navigation-item">
-      <div class="Slide__Content">
-        <h2>Scroll Snapping</h2>
-        <p>When scrolling, the scroll will intelligently snap to slides</p>
+      <div class="Slide__Content Slide__Content--alignCenter">
+        <h2>Scroll Snap</h2>
+        <p>Scrolling will snap to this box when you stop scrolling.</p>
       </div>
     </div>
     <div class="Slide" data-component="scroll-navigation-item">
       <div class="Slide__Content">
-        <h2>Scroll Navigation</h2>
-        <p></p>
-      </div>
-    </div>
-    <div class="Slide" data-component="scroll-navigation-item">
-      <div class="Slide__Content">
-        <h2>Made for Webflow</h2>
+        <h2>Usage</h2>
         <p>
-          Feel free to use for general purposes, but the API was created with
-          Webflow in mind.
+          This section is not finished. In the meantime you can check out the
+          code on
+          <a
+            href="https://github.com/statusquack/scroll-navigation"
+            target="_blank"
+            >Github</a
+          >
+        </p>
+      </div>
+    </div>
+    <div class="Slide" data-component="scroll-navigation-item">
+      <div class="Slide__Content">
+        <h2>Made with Webflow in mind</h2>
+        <p>
+          To see how to use this library with Webflow,
+          <a
+            href="https://github.com/statusquack/scroll-navigation/wiki"
+            target="_blank"
+            >see our Wiki</a
+          >.
         </p>
       </div>
     </div>
