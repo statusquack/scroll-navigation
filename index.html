@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Scroll Navigation - Status Quack</title>
+
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/default.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&amp;subset=latin-ext"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Teko:700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        font-family: "Open Sans";
+        color: #222;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: Teko;
+      }
+
+      h1 {
+        text-align: center;
+        line-height: 1em;
+        font-size: 4rem;
+      }
+      h1 small {
+        opacity: 0.4;
+        font-size: 0.5em;
+        vertical-align: 1em;
+      }
+      h2 {
+        font-size: 2.5em;
+        margin: 0.5em 0 0 0;
+        line-height: 1em;
+      }
+      h1 a {
+        text-decoration: none;
+      }
+      a {
+        color: inherit;
+      }
+      p {
+        max-width: 400px;
+        font-size: 16px;
+      }
+
+      @media (max-width: 800px) {
+        h1 {
+          font-size: 3rem;
+          line-height: 0.6em;
+        }
+        h2 {
+          font-size: 2.2rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+
+      .Slide {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 80px 0;
+        min-height: 90vh;
+      }
+      .Slide:nth-of-type(2) {
+        min-height: 0;
+        padding: 0;
+      }
+      .Slide:nth-of-type(2) .Slide__Content {
+        margin: 40px;
+        border-radius: 16px;
+        border: 2px solid rgba(0, 0, 0, 0.05);
+      }
+      .Slide:nth-of-type(4) {
+        background-color: whitesmoke;
+      }
+      .Slide__Content {
+        width: 100%;
+        max-width: 800px;
+        padding: 24px;
+      }
+      .Slide__Content--alignCenter {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .ScrollDown {
+        position: absolute;
+        bottom: 24px;
+        font-weight: bold;
+        padding: 12px 24px;
+        border: 2px solid rgba(0, 0, 0, 0.05);
+        border-radius: 99px;
+      }
+      .ScrollDown__Text {
+        vertical-align: middle;
+        font-size: 14px;
+      }
+      .ScrollDown__Arrow {
+        position: relative;
+        vertical-align: middle;
+        margin-left: 8px;
+        margin-right: -8px;
+        animation: 1.5s ArrowDownPulse infinite;
+      }
+      @keyframes ArrowDownPulse {
+        0% {
+          top: -4px;
+        }
+        55% {
+          top: 4px;
+          opacity: 1;
+        }
+        70% {
+          top: 4px;
+          opacity: 0.1;
+        }
+        85% {
+          top: -4px;
+          opacity: 0.1;
+        }
+        100% {
+          top: -4px;
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body data-component="scroll-navigation">
+    <div class="Slide" data-component="scroll-navigation-item">
+      <a
+        href="https://github.com/statusquack/scroll-navigation"
+        class="github-corner"
+        aria-label="View source on GitHub"
+        ><svg
+          width="80"
+          height="80"
+          viewBox="0 0 250 250"
+          style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+          aria-hidden="true"
+        >
+          <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+          <path
+            d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+            fill="currentColor"
+            style="transform-origin: 130px 106px;"
+            class="octo-arm"
+          ></path>
+          <path
+            d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+            fill="currentColor"
+            class="octo-body"
+          ></path></svg></a
+      ><style>
+        .github-corner:hover .octo-arm {
+          animation: octocat-wave 560ms ease-in-out;
+        }
+        @keyframes octocat-wave {
+          0%,
+          100% {
+            transform: rotate(0);
+          }
+          20%,
+          60% {
+            transform: rotate(-25deg);
+          }
+          40%,
+          80% {
+            transform: rotate(10deg);
+          }
+        }
+        @media (max-width: 500px) {
+          .github-corner:hover .octo-arm {
+            animation: none;
+          }
+          .github-corner .octo-arm {
+            animation: octocat-wave 560ms ease-in-out;
+          }
+        }
+      </style>
+
+      <div class="Slide__Content Slide__Content--alignCenter">
+        <h1>
+          <small
+            ><a href="https://statusquack.com/" target="_blank"
+              >Status&nbsp;Quack</a
+            >&nbsp;/</small
+          >
+          Scroll&nbsp;Navigation
+        </h1>
+        <p>
+          An intelligent vanilla JavaScript library for single-page scroll
+          navigation.
+        </p>
+      </div>
+
+      <div class="ScrollDown">
+        <span class="ScrollDown__Text">Scroll Down</span>
+        <svg
+          class="ScrollDown__Arrow"
+          width="24px"
+          height="24px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="XYZIconSet__Icon__SVG XYZIconSet__Icon__SVG"
+          data-v-1aac8860=""
+          style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M10.9998 16.591C10.9998 16.591 7.23683 12.821 5.63583 11.221C5.24583 10.831 4.61183 10.831 4.22183 11.221C4.03383 11.411 3.92883 11.661 3.92883 11.931C3.92883 12.191 4.03383 12.451 4.22183 12.641C5.81983 14.231 9.69483 18.1109 11.2928 19.7109C11.4798 19.8909 11.7348 20.001 11.9998 20.001C12.2648 20.001 12.5198 19.8909 12.7068 19.7109C14.3048 18.1109 18.1798 14.231 19.7778 12.641C19.9658 12.451 20.0708 12.191 20.0708 11.931C20.0708 11.661 19.9658 11.411 19.7778 11.221C19.3878 10.831 18.7548 10.831 18.3638 11.221C16.7628 12.821 12.9998 16.591 12.9998 16.591C12.9998 16.591 12.9998 6.29101 12.9998 3.00101C12.9998 2.74101 12.8948 2.48105 12.7068 2.29105C12.5198 2.11105 12.2648 2.00101 11.9998 2.00101C11.7348 2.00101 11.4798 2.11105 11.2928 2.29105C11.1048 2.48105 10.9998 2.74101 10.9998 3.00101C10.9998 6.29101 10.9998 16.591 10.9998 16.591Z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <div class="Slide" data-component="scroll-navigation-item">
+      <div class="Slide__Content Slide__Content--alignCenter">
+        <h2>Scroll Snap</h2>
+        <p>Scrolling will snap to this box when you stop scrolling.</p>
+      </div>
+    </div>
+    <div class="Slide" data-component="scroll-navigation-item">
+      <div class="Slide__Content">
+        <h2>Usage</h2>
+        <p>
+          This section is not finished. In the meantime you can check out the
+          code on
+          <a
+            href="https://github.com/statusquack/scroll-navigation"
+            target="_blank"
+            >Github</a
+          >
+        </p>
+      </div>
+    </div>
+    <div class="Slide" data-component="scroll-navigation-item">
+      <div class="Slide__Content">
+        <h2>Made with Webflow in mind</h2>
+        <p>
+          To see how to use this library with Webflow,
+          <a
+            href="https://github.com/statusquack/scroll-navigation/wiki"
+            target="_blank"
+            >see our Wiki</a
+          >.
+        </p>
+      </div>
+    </div>
+
+    <!-- <div data-component="scroll-navigation-dots">
+      <div
+        data-component="scroll-navigation-dot"
+        data-scroll-navigation-state="active"
+      ></div>
+      <div data-component="scroll-navigation-dot"></div>
+      <div data-component="scroll-navigation-dot"></div>
+      <div data-component="scroll-navigation-dot"></div>
+    </div> -->
+
+    <style>
+      [data-component="scroll-navigation-dots"] {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      [data-component="scroll-navigation-dot"] {
+        width: 6px;
+        height: 6px;
+        margin: 0 0 8px;
+        background: black;
+        border-radius: 8px;
+        opacity: 0.5;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+
+      [data-component="scroll-navigation-dot"][data-scroll-navigation-state="active"] {
+        height: 40px;
+        opacity: 1;
+      }
+
+      @media (max-width: 1000px) {
+        [data-component="scroll-navigation-dots"] {
+          width: 24px;
+          justify-content: start;
+          padding-top: 10px;
+        }
+
+        [data-component="scroll-navigation-dot"] {
+          width: 4px;
+          height: 4px;
+        }
+      }
+    </style>
+  </body>
+</html>
