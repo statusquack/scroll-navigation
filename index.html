@@ -285,5 +285,56 @@
         </p>
       </div>
     </div>
+
+    <!-- <div data-component="scroll-navigation-dots">
+      <div
+        data-component="scroll-navigation-dot"
+        data-scroll-navigation-state="active"
+      ></div>
+      <div data-component="scroll-navigation-dot"></div>
+      <div data-component="scroll-navigation-dot"></div>
+      <div data-component="scroll-navigation-dot"></div>
+    </div> -->
+
+    <style>
+      [data-component="scroll-navigation-dots"] {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      [data-component="scroll-navigation-dot"] {
+        width: 6px;
+        height: 6px;
+        margin: 4px 0;
+        background: black;
+        border-radius: 8px;
+        opacity: 0.5;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+
+      [data-component="scroll-navigation-dot"][data-scroll-navigation-state="active"] {
+        height: 40px;
+        opacity: 1;
+      }
+
+      @media (max-width: 1000px) {
+        [data-component="scroll-navigation-dots"] {
+          width: 24px;
+        }
+
+        [data-component="scroll-navigation-dot"] {
+          width: 4px;
+          height: 4px;
+        }
+      }
+    </style>
   <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="scrollNavigation.min.js"></script><script type="text/javascript" src="scrollNavigation.fullscreen.min.js"></script></body>
 </html>
