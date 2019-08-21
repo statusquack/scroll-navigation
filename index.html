@@ -312,7 +312,7 @@
       [data-component="scroll-navigation-dot"] {
         width: 6px;
         height: 6px;
-        margin: 4px 0;
+        margin: 0 0 8px;
         background: black;
         border-radius: 8px;
         opacity: 0.5;
@@ -328,6 +328,8 @@
       @media (max-width: 1000px) {
         [data-component="scroll-navigation-dots"] {
           width: 24px;
+          justify-content: start;
+          padding-top: 10px;
         }
 
         [data-component="scroll-navigation-dot"] {
