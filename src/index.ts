@@ -8,6 +8,8 @@ export class ScrollNavigation {
   dotsChildren: HTMLElement[];
   currentIndex: number;
 
+  touching: boolean;
+
   constructor(root: HTMLElement) {
     this.root = root;
     this.root.style.scrollBehavior = "smooth";
