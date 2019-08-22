@@ -4,6 +4,7 @@ export declare class ScrollNavigation {
     dotsRoot: HTMLElement;
     dotsChildren: HTMLElement[];
     currentIndex: number;
+    touching: boolean;
     constructor(root: HTMLElement);
     refreshChildren(): void;
     refreshDots(): void;
