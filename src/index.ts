@@ -6,7 +6,7 @@ export class ScrollNavigation {
   children: Element[];
   dotsRoot: HTMLElement;
   dotsChildren: HTMLElement[];
-  currentIndex: number = 0;
+  currentIndex: number;
 
   constructor(root: HTMLElement) {
     this.root = root;
@@ -51,9 +51,10 @@ export class ScrollNavigation {
       return;
     }
 
-    this.dotsChildren[this.currentIndex].removeAttribute(
+    this.dotsChildren[this.currentIndex || 0].removeAttribute(
       "data-scroll-navigation-state"
     );
+
     this.dotsChildren[index].setAttribute(
       "data-scroll-navigation-state",
       "active"

@@ -31,7 +31,12 @@ const config: webpack.Configuration = {
     compress: true,
     port: 9000
   },
-  plugins: [new HTMLWebpackPlugin({ template: "./index.html" })]
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: "./index.html",
+      version: require("./package.json").version
+    })
+  ]
 };
 
 export default config;

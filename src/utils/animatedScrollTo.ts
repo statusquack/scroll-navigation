@@ -17,10 +17,22 @@ const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
   return (-c / 2) * (t * (t - 2) - 1) + b;
 };
 
+let userScroll = false;
+const startUserScroll = () => {
+  if (!userScroll) console.log("startUserScroll");
+  userScroll = true;
+};
+// addEventListener("wheel", startUserScroll);
+// addEventListener("mousewheel", startUserScroll);
+// addEventListener("DOMMouseScroll", startUserScroll);
+// addEventListener("keyup", startUserScroll);
+// addEventListener("mousedown", startUserScroll);
+// addEventListener("touchmove", startUserScroll);
+
 export const animatedScrollTo = (
   element: HTMLElement,
   to: number,
-  duration: number = 200,
+  duration: number = 0,
   callback?: () => void
 ) => {
   // if (suppportsScrollBehavior) {
@@ -35,7 +47,8 @@ export const animatedScrollTo = (
   let lastpos: number = 0;
 
   const animateScroll = () => {
-    if (!animating) {
+    if (!animating || userScroll) {
+      userScroll = false;
       return;
     }
     requestAnimFrame(animateScroll);
