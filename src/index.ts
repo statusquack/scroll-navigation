@@ -53,6 +53,8 @@ export class ScrollNavigation {
       return;
     }
 
+    this.root.setAttribute("data-scroll-navigation-active-slide", `${index}`);
+
     this.dotsChildren[this.currentIndex || 0].removeAttribute(
       "data-scroll-navigation-state"
     );
